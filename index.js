@@ -69,10 +69,9 @@ io.on('connection', socket=>{
 });
 
 
-
 const PORT = 3005 || process.env.PORT;
 server.listen(PORT,()=>{
-    console.log('Server is up on 3005');
-})
+    console.log('Server is up');
+});
 
 
