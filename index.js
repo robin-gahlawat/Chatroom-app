@@ -18,11 +18,12 @@ const botName = 'Chatbot';
 app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', socket=>{
-    console.log('New user joined');
 
     socket.on('joinroom', ({username, room})=>{
 
         const user = userJoin(socket.id, username, room);
+        console.log(`${username} has joined`);
+
 
         socket.join(user.room);
 
@@ -56,6 +57,7 @@ io.on('connection', socket=>{
     socket.on('disconnect', ()=>{
         const user = userLeave(socket.id);
         if(user){
+            console.log(`${user.username} has left`);
             io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`) );
                     // Send users and room info
             io.to(user.room).emit('roomUsers', {
