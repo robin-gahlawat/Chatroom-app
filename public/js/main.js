@@ -1,5 +1,4 @@
 
-const moment = require('moment');
 
  
 const chatForm = document.getElementById('chat-form');
@@ -47,11 +46,10 @@ socket.on('message', message=>{
 
 // Sending message to DOM
 function outputMessage(message){
-   const client_time = moment().format('h:mm a')
    const div = document.createElement('div');
    div.classList.add('message');
    div.innerHTML = ` 
-   <p class="meta"> ${message.username} <span>${client_time}</span></p>
+   <p class="meta"> ${message.username} <span>${message.time}</span></p>
    <p> ${message.text} </p>
    `;
 
