@@ -46,10 +46,14 @@ socket.on('message', message=>{
 
 // Sending message to DOM
 function outputMessage(message){
+
+   const d = new Date();
+   const time = d.getHours() + ':'+ d.getMinutes();
+
    const div = document.createElement('div');
    div.classList.add('message');
    div.innerHTML = ` 
-   <p class="meta"> ${message.username} <span>${message.time}</span></p>
+   <p class="meta"> ${message.username} <span>${time}</span></p>
    <p> ${message.text} </p>
    `;
 
